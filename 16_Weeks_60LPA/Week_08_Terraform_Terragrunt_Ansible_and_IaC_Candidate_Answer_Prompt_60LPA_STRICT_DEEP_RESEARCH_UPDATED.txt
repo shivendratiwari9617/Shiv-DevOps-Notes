@@ -1,0 +1,130 @@
+Week 08 Candidate Answer Prompt - Terraform, Terragrunt, Ansible, and IaC
+
+Read the attached/reference files carefully:
+1. PlatformEngineering.txt
+2. RoadMap.txt
+3. Week_08_Terraform_Terragrunt_Ansible_and_IaC_Prompt.txt
+4. The generated Question CSV for Week 8
+
+Treat PlatformEngineering.txt as the senior-level expectation and strict quality-control instruction.
+Treat RoadMap.txt as the 16-week roadmap and coverage source.
+Treat Week_08_Terraform_Terragrunt_Ansible_and_IaC_Prompt.txt as the week-specific question-generation context.
+Treat the Question CSV as the only source of questions to answer.
+
+CURRENT ANSWER REQUEST
+Week: 8
+Domain: Terraform, Terragrunt, Ansible, and IaC
+
+This answer prompt must deeply respect the same week coverage:
+- Terraform modules, remote state, locking, workspaces
+- state corruption, force-unlock, import, drift detection
+- provider versioning, module versioning, dependency management
+- plan/apply workflow, CI/CD approval, policy as code
+- secret leakage in Terraform state and secure handling
+- Terragrunt DRY structure and multi-environment design
+- Ansible roles, inventory, idempotency, partial failure recovery
+- IaC rollback strategy, state recovery, production change control
+- unexpected resource replacement and blast-radius review
+- multi-cloud IaC design and governance
+
+You are acting as a senior DevOps / Platform Engineering / SRE / MLOps candidate with 8+ years of real production experience, preparing for 60 LPA+ product-based company interviews.
+
+Your job is to generate strong candidate answers for the interview questions provided in the Question CSV.
+
+SEQUENTIAL DEEP-RESEARCH ANSWER RULE
+- Process the Question CSV strictly question by question in ascending Q No. order: first complete Q1, then move to Q2, then Q3, and continue until the last question.
+- For every single question, first do deep scenario-level research and reasoning using the attached/reference files, the week scope, and senior production best practices before writing the answer.
+- Do not generate shallow, copied, generic, or template-style answers. Each answer must feel like it is spoken by a real 8+ years senior DevOps / Platform / SRE / MLOps human candidate targeting 60 LPA+ product-based company interviews.
+- Finish one question completely before starting the next one. Do not combine answers, skip questions, summarize multiple questions together, or reduce quality as the question count increases.
+- Every answer must prove senior ownership: impact assessment, blast-radius control, triage signals, root-cause isolation, safe mitigation/rollback, validation, RCA, prevention, automation, and communication wherever relevant.
+- Every answer must include practical production judgment, realistic trade-offs, and scenario-specific checks instead of only naming tools or commands.
+- Before final output, internally reject and rewrite any answer that sounds like a fresher, textbook explanation, generic AI response, or only tool-knowledge answer.
+- Avoid repeated answer patterns. The structure, signals, depth, and wording must adapt to the exact question type and production scenario.
+
+STRICT TASK
+- Generate answers only for the questions present in the Question CSV.
+- Answer strictly based on the Q No. and Interview Question.
+- Do not add any unrelated explanation before or after the output.
+- Do not generate new questions.
+- Do not change, rewrite, merge, or skip any question.
+- Do not renumber questions.
+- Do not add topics that are not relevant to the question.
+- Do not give beginner textbook answers.
+- Do not give vague answers like "I will check logs and fix it."
+- Avoid generic answers. Every answer must clearly show senior ownership, not only tool knowledge.
+- Do not over-explain basic definitions.
+- Do not add long theory notes.
+- Do not invent fake company names, fake tools, fake metrics, or fake incidents.
+- Do not write YAML, Terraform, pipeline code, scripts, or long command blocks unless the question explicitly asks for implementation output.
+- For Question Type = Implementation, include a concise Terraform resource block, Terragrunt configuration, or Ansible task snippet (10 to 20 lines maximum) to demonstrate hands-on depth. Do not write complete files.
+- Short command names, tool names, dashboards, logs, metrics, and troubleshooting checks are allowed when needed for a realistic senior answer.
+
+ANSWER QUALITY STANDARD
+Every answer must sound like a senior engineer who has owned production systems. Each answer should satisfy a senior interviewer by covering the correct mix of:
+- Immediate impact assessment and blast-radius control
+- Triage approach and signal collection
+- Deep troubleshooting path
+- Likely root-cause isolation
+- Safe mitigation or rollback
+- Validation after fix
+- RCA and permanent prevention
+- Automation/runbook/platform improvement
+- Security, reliability, scalability, observability, and cost trade-offs where relevant
+- Clear ownership and communication during incidents
+
+ANSWER STYLE
+- Use first-person senior candidate tone: "I would first...", "My approach would be...", "I would validate..."
+- Keep answers practical, production-focused, and interviewer-ready.
+- For normal troubleshooting questions, use 120 to 220 words per answer.
+- For architecture/system design/leadership questions, use 180 to 300 words per answer.
+- For very small direct questions, keep the answer concise but still senior-level.
+- Prefer structured paragraphs inside the Candidate Answer section.
+- Do not use bullet lists unless the answer would otherwise become hard to read.
+- Avoid filler lines, motivational text, or generic preparation advice.
+
+OUTPUT FORMAT
+Format the output as a structured Word document (DOCX-ready). Do not return a table or CSV format.
+
+At the very top of the document write:
+Week 8 — Terraform, Terragrunt, Ansible and IaC — Candidate Answers (60 LPA+)
+
+For every question, repeat this block in Q No. order:
+
+---
+Q[Q No.] | [Tool/Topic] | [Priority] | [Question Type]
+
+Interview Question:
+[Copy the full Interview Question exactly from the CSV]
+
+Candidate Answer:
+[Write the answer here in structured paragraphs]
+
+---
+
+DOCUMENT RULES
+- Copy Q No., Tool/Topic, Priority, Question Type, and Interview Question exactly from the input CSV.
+- Write the Candidate Answer in structured paragraphs below the "Candidate Answer:" label.
+- Keep every answer block mapped to its correct Q No.
+- Separate every Q&A block with a horizontal line (---).
+- Do not use a table or CSV layout.
+- Do not add extra fields, metadata columns, or rows.
+- Do not add summary, notes, explanation, or conclusion after the last answer block.
+
+INPUT
+Paste or attach the Question CSV below this prompt.
+
+
+WEEK-SPECIFIC ANSWER RULE
+Generate candidate answers only for Week 8: Terraform, Terragrunt, Ansible, and IaC.
+Do not answer questions from other weeks.
+Do not mix this week with other roadmap weeks unless the question explicitly asks for cross-domain production impact.
+
+FINAL CHECK BEFORE RESPONDING
+Before final output, silently verify that every answer:
+- Directly answers the exact Interview Question.
+- Is strong enough for a 60 LPA+ senior product-company interview.
+- Shows production troubleshooting, implementation depth, architecture judgment, SRE maturity, platform ownership, or MLOps readiness as applicable.
+- Avoids unrelated explanation and generic textbook theory.
+- Keeps the original Q No. unchanged.
+
+PASTE QUESTION CSV BELOW

@@ -1,0 +1,362 @@
+Master Candidate Answer Prompt for All 16 Weeks - 60 LPA+ Senior DevOps / Platform / SRE / MLOps Interviews
+
+Use this prompt when you have a Question CSV from any of the 16 week-wise question files.
+
+Read the attached/reference files carefully:
+1. PlatformEngineering.txt
+2. RoadMap.txt
+3. The relevant Week_XX question prompt file
+4. The generated Question CSV
+
+Treat PlatformEngineering.txt as the senior-level expectation and strict quality-control instruction.
+Treat RoadMap.txt as the 16-week roadmap and coverage source.
+Treat the relevant Week_XX question prompt as week-specific scope.
+Treat the Question CSV as the only source of questions to answer.
+
+16-WEEK SCOPE SUMMARY
+
+Week 01: Linux Deep Troubleshooting
+Coverage:
+- Linux production troubleshooting
+- systemd and service startup failures
+- process management, zombie/stuck processes, high CPU
+- memory leak, swap, OOM, resource saturation
+- disk full, inode full, deleted files holding disk space
+- file permissions, ownership, sudo, user/group access issues
+- ulimit and file descriptor exhaustion
+- cron job failures
+- package and dependency issues
+- kernel basics for production troubleshooting
+- log analysis using journalctl, syslog, and application logs
+- port binding, listening issues, service running but not reachable
+- high IO wait, disk latency, load average investigation
+- Linux node issues impacting Kubernetes nodes or CI/CD runners
+- SSH access failure, log rotation failure, time sync/NTP issues
+- patch management, rollback, kernel panic, unexpected reboot investigation
+- Linux automation and runbook improvement
+
+Week 02: Networking Deep Dive
+Coverage:
+- DNS resolution flow, TTL, A/CNAME records, internal and external DNS failures
+- TCP/IP handshake, retransmission, connection timeout, packet loss
+- HTTP/HTTPS behavior, status codes, headers, latency debugging
+- TLS/SSL certificate chain, expiry, handshake, SNI issues
+- load balancer health checks, 502/503/504 failures
+- reverse proxy routing, NGINX/API gateway connectivity issues
+- firewall, security groups, NSG, inbound/outbound rules
+- NAT, private subnet internet access, egress failures
+- VPC/VNet, subnet, route table, peering, private endpoint issues
+- VPN, ExpressRoute, Direct Connect connectivity and routing problems
+- service discovery and cross-service latency
+- packet flow debugging and production network incident isolation
+
+Week 03: Containers and Docker
+Coverage:
+- Dockerfile design and multi-stage builds
+- image size optimization, layer caching, dependency management
+- distroless images, non-root containers, runtime security
+- image vulnerability scanning and base image upgrade impact
+- registry authentication, push/pull failures, ImagePullBackOff causes
+- container exits immediately, runtime crash, missing runtime dependencies
+- container networking, port exposure, bridge/host networking issues
+- Docker daemon issues on self-hosted CI/CD runners
+- build cache corruption and CI-only build failures
+- container logs, inspect, exec-based debugging scenarios
+- container supply-chain and production hardening scenarios
+
+Week 04: Kubernetes Core Troubleshooting
+Coverage:
+- Pods, Deployments, StatefulSets, DaemonSets
+- Services, Endpoints, Ingress, CoreDNS, service discovery
+- ConfigMap, Secret, rollout behavior after config changes
+- PV, PVC, StorageClass, volume mount failures
+- readiness, liveness, startup probe failures and misconfiguration
+- scheduling, nodeSelector, taints/tolerations, affinity/anti-affinity
+- resource requests/limits, QoS classes, OOMKilled, node pressure
+- HPA, VPA, Cluster Autoscaler failures
+- RBAC, NetworkPolicy, Pod Security
+- CrashLoopBackOff, ImagePullBackOff, Pending pods, rollout stuck
+- AKS/EKS/GKE production differences
+- Kubernetes incident debugging, mitigation, rollback, and RCA
+
+Week 05: Advanced Kubernetes, Helm, Kustomize, and GitOps
+Coverage:
+- Helm chart design, values management, templating, linting, rollback
+- Helm dependency management, environment-specific values, failed release recovery
+- Kustomize base/overlay design, patches, prod/dev differences
+- Argo CD sync, health, drift, app-of-apps, OutOfSync issues
+- Flux CD GitOps flow and failure handling
+- GitOps deployment strategy, promotion, rollback, and drift detection
+- External Secrets, sealed secrets, secrets with GitOps
+- OPA Gatekeeper and Kyverno admission policy failures
+- multi-cluster and multi-environment promotion
+- canary/blue-green deployment failures through GitOps
+
+Week 06: Cloud Foundation: AWS, Azure, GCP
+Coverage:
+- AWS IAM, VPC, EC2, ALB/NLB, S3, RDS, EKS, CloudWatch
+- Azure Entra ID, RBAC, VNet, NSG, AKS, Key Vault, Azure Monitor, Application Insights
+- GCP IAM, VPC, GKE, Cloud Load Balancing, Cloud SQL, Cloud Monitoring, Cloud Logging
+- IAM permission denied and least-privilege troubleshooting
+- private subnet internet access, NAT, route tables, peering
+- load balancer health check failures across clouds
+- secrets access denied, VM/node-to-database connectivity issues
+- storage access blocked, public access risks
+- autoscaling failures and monitoring alert failures
+- cloud cost increase investigation and resource governance
+
+Week 07: Cloud Architecture, Landing Zone, HA/DR, Multi-Region Design
+Coverage:
+- landing zone design across AWS/Azure/GCP
+- multi-account, subscription, project structure and governance
+- hub-spoke network, peering, private endpoints, shared services
+- high availability, zone redundancy, regional redundancy
+- active-passive and active-active architecture decisions
+- DR strategy, backup, restore, failover, RTO/RPO
+- cloud migration: lift-shift, re-platform, re-architect
+- policy guardrails, audit, compliance, tagging and budgets
+- secure AKS/EKS/GKE architecture
+- cost governance and multi-region trade-offs
+
+Week 08: Terraform, Terragrunt, Ansible, and IaC
+Coverage:
+- Terraform modules, remote state, locking, workspaces
+- state corruption, force-unlock, import, drift detection
+- provider versioning, module versioning, dependency management
+- plan/apply workflow, CI/CD approval, policy as code
+- secret leakage in Terraform state and secure handling
+- Terragrunt DRY structure and multi-environment design
+- Ansible roles, inventory, idempotency, partial failure recovery
+- IaC rollback strategy, state recovery, production change control
+- unexpected resource replacement and blast-radius review
+- multi-cloud IaC design and governance
+
+Week 09: CI/CD and Release Engineering
+Coverage:
+- Jenkins, GitHub Actions, Azure DevOps Pipelines, GitLab CI
+- pipeline design for build, test, scan, package, deploy
+- artifact versioning, promotion, integrity, rollback
+- rolling, blue-green, canary, feature flag deployments
+- release tagging, hotfix, trunk-based development, GitFlow
+- self-hosted runners, ephemeral runners, runner scaling and cleanup
+- pipeline secrets, OIDC, approval gates, least privilege
+- flaky tests, caching, parallelism, long build time
+- deployment succeeded but application broken
+- artifact mismatch, rollback failure, pipeline incident RCA
+
+Week 10: Observability and Monitoring
+Coverage:
+- Prometheus, Grafana, Alertmanager
+- ELK/EFK, Loki, centralized logging
+- Jaeger, OpenTelemetry, distributed tracing
+- Azure Monitor, Application Insights, CloudWatch, GCP Monitoring
+- metrics, logs, traces correlation during incidents
+- golden signals, RED method, USE method
+- SLO dashboards and burn-rate alerting
+- missing logs, noisy alerts, high-cardinality metrics
+- Prometheus storage full, misleading dashboards
+- alert severity, actionable alerts, incident debugging visibility
+
+Week 11: SRE and Production Reliability
+Coverage:
+- SLA, SLO, SLI, error budget
+- incident severity, incident commander, war room communication
+- postmortem, RCA, timeline, action items, no-blame culture
+- runbooks, playbooks, operational readiness
+- toil reduction, automation, self-healing
+- capacity planning, forecasting, traffic spike readiness
+- DR, backup/restore, RTO/RPO, failover drills
+- production readiness review
+- chaos engineering and controlled failure testing
+- error budget-based release decisions and reliability trade-offs
+
+Week 12: Security and DevSecOps
+Coverage:
+- IAM, RBAC, Entra ID, OIDC, SSO
+- Key Vault, AWS Secrets Manager, GCP Secret Manager, HashiCorp Vault
+- External Secrets Operator, cert-manager, TLS rotation
+- Kubernetes RBAC, NetworkPolicy, Pod Security
+- image scanning, SAST, DAST, SCA, SBOM
+- Trivy, Snyk, SonarQube
+- OPA Gatekeeper, Kyverno, policy-as-code
+- least privilege, audit logs, cloud security posture management
+- secret rotation failures, certificate expiry, OIDC federation failures
+- sensitive data in logs, public bucket/storage exposure
+
+Week 13: Databases, Storage, Messaging, and Service Mesh
+Coverage:
+- PostgreSQL, MySQL, MongoDB production troubleshooting
+- RDS, Cloud SQL, Azure SQL, backup, restore, failover
+- connection pooling, slow queries, replication lag, disk latency
+- Redis memory, eviction, cache failures
+- Elasticsearch/OpenSearch cluster health, red/yellow state
+- Kafka, RabbitMQ, SQS/SNS, Pub/Sub, Azure Service Bus
+- consumer lag, DLQ, retry, ordering, idempotency, backpressure
+- Istio, Linkerd, Envoy, NGINX, Kong, API Gateway
+- mTLS, retries, timeouts, circuit breaker, rate limiting
+- retry storm, gateway 429/502/503, service mesh traffic failures
+
+Week 14: MLOps and ML Platform Engineering
+Coverage:
+- MLflow, model registry, experiment tracking, model versioning
+- Kubeflow, Airflow, DVC pipelines and production failures
+- SageMaker, Azure ML, Vertex AI production workflows
+- KServe, Seldon Core, BentoML model serving
+- Feast and feature store consistency
+- Evidently AI, WhyLabs, model/data drift monitoring
+- batch inference, real-time inference, canary and shadow deployment
+- model rollback, model approval workflow, governance
+- GPU scheduling, autoscaling, inference latency
+- online/offline feature mismatch, model accuracy degradation
+- LLMOps basics, vector DB, RAG deployment basics
+
+Week 15: Platform Engineering and End-to-End Implementation
+Coverage:
+- Internal Developer Platform and developer self-service
+- golden paths, platform templates, service catalog, Backstage
+- environment provisioning and multi-tenant Kubernetes platform
+- platform APIs, guardrails, paved road approach
+- developer productivity and platform adoption metrics
+- end-to-end production-grade Kubernetes platform implementation
+- Terraform modules for VPC, Kubernetes, IAM, monitoring, database
+- CI/CD + GitOps platform implementation with rollback and audit trail
+- observability/SLO platform implementation
+- MLOps platform implementation with MLflow, DVC, Airflow/Kubeflow
+- secrets management, DR, cost optimization, production readiness checklist
+
+Week 16: System Design, Resume Deep Dive, Leadership, Ownership, and Bar-Raiser
+Coverage:
+- system design for multi-cloud Kubernetes platform
+- system design for CI/CD supporting hundreds of microservices
+- observability platform for large SaaS/product environment
+- secure secrets management and zero-downtime deployment architecture
+- disaster recovery for healthcare/business-critical platforms
+- ML training and serving platform design
+- internal developer platform and cost-optimized Kubernetes platform
+- production incident management system design
+- resume deep dive: architecture, individual contribution, metrics, rollback, security, scalability
+- defending claims like uptime improvement, incident response reduction, release cycle reduction, IaC productivity improvement, MLOps infrastructure impact
+- leadership, ownership, bar-raiser, conflict handling, influencing without authority
+- P1/P0 incident communication, postmortem leadership, roadmap ownership
+- build-vs-buy, mentoring, cost trade-offs, reliability trade-offs
+
+
+You are acting as a senior DevOps / Platform Engineering / SRE / MLOps candidate with 8+ years of real production experience, preparing for 60 LPA+ product-based company interviews.
+
+Your job is to generate strong candidate answers for the interview questions provided in the Question CSV.
+
+SEQUENTIAL DEEP-RESEARCH ANSWER RULE
+- Process the Question CSV strictly question by question in ascending Q No. order: first complete Q1, then move to Q2, then Q3, and continue until the last question.
+- For every single question, first do deep scenario-level research and reasoning using the attached/reference files, the week scope, and senior production best practices before writing the answer.
+- Do not generate shallow, copied, generic, or template-style answers. Each answer must feel like it is spoken by a real 8+ years senior DevOps / Platform / SRE / MLOps human candidate targeting 60 LPA+ product-based company interviews.
+- Finish one question completely before starting the next one. Do not combine answers, skip questions, summarize multiple questions together, or reduce quality as the question count increases.
+- Every answer must prove senior ownership: impact assessment, blast-radius control, triage signals, root-cause isolation, safe mitigation/rollback, validation, RCA, prevention, automation, and communication wherever relevant.
+- Every answer must include practical production judgment, realistic trade-offs, and scenario-specific checks instead of only naming tools or commands.
+- Before final output, internally reject and rewrite any answer that sounds like a fresher, textbook explanation, generic AI response, or only tool-knowledge answer.
+- Avoid repeated answer patterns. The structure, signals, depth, and wording must adapt to the exact question type and production scenario.
+
+STRICT TASK
+- Generate answers only for the questions present in the Question CSV.
+- Answer strictly based on the Q No. and Interview Question.
+- Do not add any unrelated explanation before or after the output.
+- Do not generate new questions.
+- Do not change, rewrite, merge, or skip any question.
+- Do not renumber questions.
+- Do not add topics that are not relevant to the question.
+- Do not give beginner textbook answers.
+- Do not give vague answers like "I will check logs and fix it."
+- Avoid generic answers. Every answer must clearly show senior ownership, not only tool knowledge.
+- Do not over-explain basic definitions.
+- Do not add long theory notes.
+- Do not invent fake company names, fake tools, fake metrics, or fake incidents.
+- Do not write YAML, Terraform, pipeline code, scripts, or long command blocks unless the question explicitly asks for implementation output.
+- For Question Type = Implementation, include a concise YAML snippet, Terraform block, shell command, or tool-specific config (10 to 20 lines maximum) to demonstrate hands-on depth. Do not write complete files.
+- Short command names, tool names, dashboards, logs, metrics, and troubleshooting checks are allowed when needed for a realistic senior answer.
+
+ANSWER QUALITY STANDARD
+Every answer must sound like a senior engineer who has owned production systems. Each answer should satisfy a senior interviewer by covering the correct mix of:
+- Immediate impact assessment and blast-radius control
+- Triage approach and signal collection
+- Deep troubleshooting path
+- Likely root-cause isolation
+- Safe mitigation or rollback
+- Validation after fix
+- RCA and permanent prevention
+- Automation/runbook/platform improvement
+- Security, reliability, scalability, observability, and cost trade-offs where relevant
+- Clear ownership and communication during incidents
+
+For Week 11 (SRE) answers, additionally cover: SLO math and error budget percentage, burn rate calculation, MTTR/MTBF framing, toil quantification, and blameless postmortem structure.
+For Week 12 (Security) answers, additionally cover: CVE severity scoring, compliance framework (SOC 2, PCI-DSS, CIS) awareness, least-privilege proof, audit log evidence, and shift-left gate placement.
+For Week 14 (MLOps) answers, additionally cover: model accuracy delta, drift percentage, feature consistency deviation, inference latency (P95/P99), pipeline SLA, and model rollback trigger criteria.
+For Week 16 (System Design) answers: cover functional requirements, capacity estimation, component breakdown, failure modes, trade-offs, and operational readiness. Do not use the troubleshooting quality standard for design questions.
+For Week 16 (Leadership/Bar-Raiser) answers: use STAR format — Situation, Task, Action (50% of answer), Result with a specific metric. Do not write a generic narrative.
+For Week 16 (Resume Deep Dive) answers: cite a specific metric, your individual contribution, the decision you made, and the lasting improvement you delivered.
+
+ANSWER STYLE
+- Use first-person senior candidate tone: "I would first...", "My approach would be...", "I would validate..."
+- Keep answers practical, production-focused, and interviewer-ready.
+- For normal troubleshooting questions (Weeks 1-13), use 120 to 220 words per answer.
+- For architecture/design questions (Weeks 7, 15), use 180 to 300 words per answer.
+- For Week 16 System Design questions, use 400 to 600 words. Cover requirements, components, failure handling, trade-offs, and operations. Do not stop at a high-level overview.
+- For Week 16 Leadership/Bar-Raiser questions, use STAR format strictly. Situation (1-2 sentences), Task (1 sentence), Action (detailed, 50% of answer), Result (specific metric). Total 200 to 300 words.
+- For Week 16 Resume Deep Dive questions, use 180 to 280 words. Always include a specific metric in the result.
+- For very small direct questions, keep the answer concise but still senior-level.
+- Prefer structured paragraphs inside the Candidate Answer section.
+- Do not use bullet lists unless the answer would otherwise become hard to read.
+- Avoid filler lines, motivational text, or generic preparation advice.
+
+OUTPUT FORMAT
+Format the output as a structured Word document (DOCX-ready). Do not return a table or CSV format.
+
+At the very top of the document write:
+[Week Number] — [Domain Name] — Candidate Answers (60 LPA+)
+Derive the week number and domain from the Week and Domain columns in the input CSV. If the CSV contains multiple weeks, use: All Weeks — Candidate Answers (60 LPA+)
+
+For every question, repeat this block in Q No. order:
+
+---
+Q[Q No.] | [Tool/Topic] | [Priority] | [Question Type]
+
+Interview Question:
+[Copy the full Interview Question exactly from the CSV]
+
+Candidate Answer:
+[Write the answer here in structured paragraphs]
+
+---
+
+DOCUMENT RULES
+- Copy Q No., Tool/Topic, Priority, Question Type, and Interview Question exactly from the input CSV.
+- Write the Candidate Answer in structured paragraphs below the "Candidate Answer:" label.
+- Keep every answer block mapped to its correct Q No.
+- Separate every Q&A block with a horizontal line (---).
+- Do not use a table or CSV layout.
+- Do not add extra fields, metadata columns, or rows.
+- Do not add summary, notes, explanation, or conclusion after the last answer block.
+
+INPUT
+Paste or attach the Question CSV below this prompt.
+
+
+ALL-WEEKS ROUTING RULE
+- Use the Week column in the Question CSV to identify the correct weekly domain.
+- If a CSV contains multiple weeks, answer each row according to its Week and Domain.
+- Keep every answer mapped to the exact Q No.
+- Do not merge answers across weeks.
+- Do not generate answers for missing Q Nos.
+- If a row is malformed, keep the row and write "Input question is incomplete; please provide the full Interview Question." in Candidate Answer.
+
+FINAL CHECK BEFORE RESPONDING
+Before final output, silently verify that every answer:
+- Directly answers the exact Interview Question.
+- Sounds like a senior engineer with real production ownership.
+- Is suitable for 60 LPA+ product-based company interviews.
+- For troubleshooting answers: includes triage depth, root-cause isolation, mitigation, and RCA/prevention.
+- For System Design answers (Week 16): covers requirements, components, failure modes, trade-offs, and operations. Is 400 to 600 words. Does not stop at a vague overview.
+- For Leadership/Bar-Raiser answers (Week 16): follows STAR format with a specific measurable result.
+- For Resume Deep Dive answers (Week 16): includes a real metric and individual contribution.
+- For Implementation answers (any week): includes a concise code or config snippet demonstrating hands-on depth.
+- Contains no extra explanation outside the requested document.
+
+PASTE QUESTION CSV BELOW
